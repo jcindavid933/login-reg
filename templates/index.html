@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Login and Registration</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <style>
+  *{
+    margin: 0px;
+    padding: 0px;
+  }
+  div{
+    display: inline-block;
+    padding: 30px;
+  }
+  .container_right{
+    vertical-align: top;
+    margin-top: 50px;
+    margin-left: 200px;
+  }
+  label{
+    display: block;
+    margin: 10px;
+    margin
+  }
+  h2{
+    color: red;
+  }
+  </style>
+  <body>
+    <div class="container_left">
+      <h1>Login and Registration</h1><br>
+      <h1>Register Here!</h1>
+      <form class="register" action="/create" method="post">
+        {% with messages = get_flashed_messages(category_filter=['first_name']) %}
+          {% if messages %}
+            {%for message in messages: %}
+              <h2>{{message}}</h2>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        <label for="first_name">First Name: </label>
+        <input type="text" name="first_name">
+
+        {% with messages = get_flashed_messages(category_filter=['last_name']) %}
+          {% if messages %}
+            {%for message in messages: %}
+              <h2>{{message}}</h2>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        <label for="last_name">Last Name: </label>
+        <input type="text" name="last_name">
+
+        {% with messages = get_flashed_messages(category_filter=['email']) %}
+          {% if messages %}
+            {%for message in messages: %}
+              <h2>{{message}}</h2>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        <label for="email">Email: </label>
+        <input type="text" name="email">
+
+        {% with messages = get_flashed_messages(category_filter=['password']) %}
+          {% if messages %}
+            {%for message in messages: %}
+              <h2>{{message}}</h2>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        <label for="password">Password: </label>
+        <input type="text" name="password">
+
+        {% with messages = get_flashed_messages(category_filter=['pass_confirm']) %}
+          {% if messages %}
+            {%for message in messages: %}
+              <h2>{{message}}</h2>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        <label for="pass_confirm">Password Confirmation: </label>
+        <input type="text" name="pass_confirm"><br>
+
+        <input type="submit" name="submit" value="Register!">
+      </form>
+    </div>
+    <div class="container_right">
+      <h1>Login Here!</h1>
+      <form class="login" action="/validate" method="post">
+        <h4>Email: </h4>
+        <input type="text" name="email_login">
+        <h4>Password: </h4>
+        <input type="text" name="password_login">
+        <input type="submit" name="submit" value="Login!">
+        {% with messages = get_flashed_messages(category_filter=['password_error']) %}
+          {% if messages %}
+            {%for message in messages: %}
+              <h2>{{message}}</h2>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+      </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
